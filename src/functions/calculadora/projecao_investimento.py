@@ -1,4 +1,4 @@
-from util.util import fimFuncao
+from util.util import fim_funcao
 
 
 def projecao_investimento():
@@ -21,4 +21,4 @@ def projecao_investimento():
 
     print("Rendimento mensal no fim de " + str(qtdAnos) + " ano(s) será de "  "${:,.2f}".format(
         rendimentoAnualFinal / 12))
-    fimFuncao()
+    fim_funcao()

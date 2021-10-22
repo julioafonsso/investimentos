@@ -1,4 +1,4 @@
-from util.util import fimFuncao
+from util.util import fim_funcao
 
 
 def calcular_relacao_percentual_precos():
@@ -6,4 +6,4 @@ def calcular_relacao_percentual_precos():
     precoy = float(input("Digite o segundo valor : "))
     percentual =  precox / precoy * 100
     print("Percentual é de ", percentual)
-    fimFuncao();
+    fim_funcao();

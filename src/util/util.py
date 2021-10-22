@@ -1,7 +1,7 @@
 import os
 from getch import getch
 
-def fimFuncao():
+def fim_funcao():
     print("")
 
     print("Digite qualquer valor para voltar ...")

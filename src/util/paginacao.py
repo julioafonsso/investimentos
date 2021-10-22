@@ -23,7 +23,7 @@ def paginacao(items, cabecalho):
         print()
         print("Pagina " + str(paginaAtual+1) + " de " + str(totalPagina))
 
-        comando = __controlePagina(primeiroItem == 0, ultimoItemPagina == qtdItems)
+        comando = __controle_pagina(primeiroItem == 0, ultimoItemPagina == qtdItems)
 
         if(comando == 0):
             clean()
@@ -32,7 +32,7 @@ def paginacao(items, cabecalho):
             clean()
             paginaAtual += comando
 
-def __controlePagina(isPrimeiraPagina, isUltimaPagina):
+def __controle_pagina(isPrimeiraPagina, isUltimaPagina):
     print()
     print("N = Next, P = Previous, Q = Quit ")
     print()

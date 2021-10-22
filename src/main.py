@@ -1,18 +1,13 @@
-from menu.calculadora import calculadora
-from menu.listAcoes import  listarAcoes
-from menu.select_menu import selectMenu
+from menu.menu_calculadora import menu_calculadora
+from menu.menu_indices import  menu_indices
+from menu.select_menu import select_menu_principal
 
 while True:
 
-    opcaoMenu = selectMenu({1: "Calculadora",
-                            2: "Listar ações",
-                            0: "Saida"})
+    opcaoMenu = select_menu_principal({1: "Calculadora",
+                                       2: "Indices"})
     match opcaoMenu:
         case 1:
-            calculadora()
+            menu_calculadora()
         case 2:
-            listarAcoes()
-        case 0:
-            break
-
-print("Finalizando...")
+            menu_indices()

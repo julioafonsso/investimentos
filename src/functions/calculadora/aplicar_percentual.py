@@ -1,4 +1,4 @@
-from util.util import fimFuncao
+from util.util import fim_funcao
 
 
 def aplicarPercentualPreco():
@@ -7,4 +7,4 @@ def aplicarPercentualPreco():
 
     valorFinal = preco * percentual / 100
     print("O valor final é ", valorFinal)
-    fimFuncao()
+    fim_funcao()

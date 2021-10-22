@@ -17,5 +17,3 @@ def listar_ativos_nasdaq():
         ativosFormatados.append(linha)
 
     paginacao(ativosFormatados, cabecalho)
-
-

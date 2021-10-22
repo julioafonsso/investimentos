@@ -3,7 +3,7 @@ from yahoo_fin.stock_info import tickers_ibovespa
 from util.paginacao import paginacao
 
 
-def listarAtivosIbovespa():
+def listar_ativos_ibovespa():
 
     cabecalho = "Codigo".ljust(10) + " | " + "Nome".ljust(15) + " | " + "Setor".ljust(50) + " | " + "Site"
 
