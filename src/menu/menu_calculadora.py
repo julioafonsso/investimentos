@@ -6,6 +6,7 @@ from menu.select_menu import select_menu
 
 
 def menu_calculadora():
+    while True:
         opcaoMenu = select_menu({
             1: "Diferença percentual entre preços",
             2: "Aplicar um percentual ao preço",
@@ -22,3 +23,5 @@ def menu_calculadora():
                 calcular_relacao_percentual_precos()
             case 4:
                 projecao_investimento()
+            case 9:
+                break
