@@ -1,62 +1,86 @@
+from datetime import datetime
+
+from model.lista import Lista
+from util.getchar import GetChar
 from util.util import clean
-from getch import getch
 from math import ceil
 
-def paginacao(items, cabecalho):
+
+def paginacao(lista: Lista):
     qtdItemPorPagina = 20
-    qtdItems = len(items)
     paginaAtual = 0
+    qtdItems = len(lista.get_lista())
     totalPagina = ceil(qtdItems / qtdItemPorPagina)
-
     while True:
-        primeiroItem = paginaAtual*qtdItemPorPagina
-        ultimoItemPagina = int(primeiroItem +qtdItemPorPagina)
+        clean()
+        primeiroItem = paginaAtual * qtdItemPorPagina
 
-        if(ultimoItemPagina > qtdItems):
+        ultimoItemPagina = int(primeiroItem + qtdItemPorPagina)
+
+        if ultimoItemPagina > qtdItems:
             ultimoItemPagina = qtdItems
 
-        print(cabecalho + "\n")
+        print(lista.cabecalho() + "\n")
 
         for index in range(primeiroItem, ultimoItemPagina):
-            print(items[index])
+            print(lista.get_lista()[index].print())
 
         print()
-        print("Pagina " + str(paginaAtual+1) + " de " + str(totalPagina))
+        print("Pagina " + str(paginaAtual + 1) + " de " + str(totalPagina))
+        print()
+        print("S = Sair, F = Filtar, O = Ordenar, L = Limpar, P = Print ")
 
-        comando = __controle_pagina(primeiroItem == 0, ultimoItemPagina == qtdItems)
+        isUltimaPagina = ultimoItemPagina == qtdItems
+        isPrimeiraPagina = primeiroItem == 0
+        while True:
+            comando = GetChar().get_value()
 
-        if(comando == 0):
-            clean()
-            break
-        else:
-            clean()
-            paginaAtual += comando
+            match comando:
+                case GetChar.RIGHT_KEY:
+                    if isUltimaPagina:
+                        continue
+                    else:
+                        paginaAtual += 1
+                        break
+                case GetChar.LEFT_KEY:
+                    if isPrimeiraPagina:
+                        continue
+                    else:
+                        paginaAtual -= 1
+                        break
+                case "s":
+                    return
+                case "o":
+                    clean()
+                    lista.ordernar()
+                    paginaAtual = 0
+                    break
+                case "l":
+                    clean()
+                    lista.limpar_filtro()
+                    paginaAtual = 0
+                    qtdItems = len(lista.get_lista())
+                    totalPagina = ceil(qtdItems / qtdItemPorPagina)
+                    break
+                case "f":
+                    clean()
+                    lista.filtrar()
+                    paginaAtual = 0
+                    qtdItems = len(lista.get_lista())
+                    totalPagina = ceil(qtdItems / qtdItemPorPagina)
+                    break
+                case "p":
+                    clean()
+                    print("digite o nome do arquivo.")
+                    nome = input()
+                    nome_arquivo = "/home/julio/investimentos/" + str(nome) + "_" + datetime.now().strftime(
+                        "%Y%m%d_%H%M%S") + ".txt"
 
-def __controle_pagina(isPrimeiraPagina, isUltimaPagina):
-    print()
-    print("N = Next, P = Previous, Q = Quit ")
-    print()
-
-    while True:
-        comando = getch()
-
-        match comando.lower():
-            case "n":
-                if(isUltimaPagina):
-                    continue
-                else:
-                    return 1
-            case "p":
-                if(isPrimeiraPagina):
-                    continue
-                else:
-                    return -1
-            case "":
-                if(isUltimaPagina):
-                    continue
-                else:
-                    return 1
-            case "q":
-                return 0
-
-
+                    arquivo = open(nome_arquivo, 'w')
+                    arquivo.write(lista.cabecalho())
+                    arquivo.write("\n")
+                    for item in lista.get_lista():
+                        arquivo.write(item.print())
+                        arquivo.write("\n")
+                    arquivo.close()
+                    break

@@ -8,5 +8,13 @@
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="model.lista_opcao.ListaOpcoes" />
+          <option value="model.opcao.lista_opcao.__filtrar_por_acao" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

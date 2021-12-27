@@ -1,4 +1,4 @@
-from util.util import fim_funcao
+from util.util import fim_funcao, clean
 
 
 def projecao_investimento():
@@ -8,17 +8,16 @@ def projecao_investimento():
     taxaMediaAnual = float(input("Digite a taxa media de juros anual : "))
 
     valorTotal = valorInicial
+    clean()
+    print("ANO   | Valor Acumulado | Rendimento Anual | Rendimento Mensal")
     for i in range(0, qtdAnos):
-        valorTotal += aporteMensal * 12
-        valorTotal += valorTotal * (taxaMediaAnual / 100)
-        print("ano " + str(i + 1).ljust(2) + " Valor Total : " + "${:,.2f}".format(valorTotal))
+        rendimento = valorTotal * (taxaMediaAnual / 100)
+        aporteAnual = aporteMensal * 12
+        valorTotal += rendimento + aporteAnual
+        print(str(i).rjust(6) + "|" +
+              "${:,.2f}".format(valorTotal).rjust(17) + "|" +
+              "${:,.2f}".format(rendimento).rjust(18) + "|" +
+              "${:,.2f}".format(rendimento/12).rjust(18))
 
-    rendimentoAnualFinal = valorTotal * taxaMediaAnual / 100
 
-    print("O valor medio calculado é de ", "${:,.2f}".format(valorTotal))
-
-    print("Rendimento anual no fim de " + str(qtdAnos) + " ano(s) será de "  "${:,.2f}".format(rendimentoAnualFinal))
-
-    print("Rendimento mensal no fim de " + str(qtdAnos) + " ano(s) será de "  "${:,.2f}".format(
-        rendimentoAnualFinal / 12))
     fim_funcao()

@@ -1,7 +1,7 @@
 from util.util import fim_funcao
 
 
-def aplicarPercentualPreco():
+def aplicar_percentual_preco():
     preco = float(input("Digite o Preço : "))
     percentual = float(input("Digite o Percentual : "))
 
