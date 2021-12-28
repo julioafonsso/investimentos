@@ -4,11 +4,11 @@ from bs4 import BeautifulSoup
 from simple_term_menu import TerminalMenu
 
 import util.util
-from model.acoes.lista_acoes_b3.Acao import Acao
+from model.acoes.ibovespa.acao import Acao
 from model.lista import Lista
 
 
-class ListaAcoesB3(Lista):
+class ListaAcoesIbovespa(Lista):
 
     def __init__(self):
         self.__acoes = []
