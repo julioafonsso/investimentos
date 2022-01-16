@@ -24,8 +24,8 @@ class ListaOpcoes(Lista):
         self.__opcoes_filtradas = self.__opcoes
 
     def __set_values(self, cod_acao, json):
-        valor_acao = json['u']
-        data_cotacao = json['y']
+        valor_acao = json['p']
+        data_cotacao = json['h']
 
         self.__datas_vencimento.update([x['dt'] for x in json['expirations']])
 
